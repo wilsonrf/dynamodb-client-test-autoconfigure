@@ -1,0 +1,2 @@
+com.wilsonfranca.test.autoconfigure.dynamodb.DynamoDbTestAutoconfiguration
+com.wilsonfranca.autoconfigure.dynamodb.DynamoDbAutoconfiguration
