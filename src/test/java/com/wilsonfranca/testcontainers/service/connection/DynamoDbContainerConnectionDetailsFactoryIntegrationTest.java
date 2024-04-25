@@ -39,7 +39,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static software.amazon.awssdk.enhanced.dynamodb.mapper.StaticAttributeTags.primaryPartitionKey;
 
 /**
- * Integration tests for {@link com.wilsonfranca.service.connection.dynamodb.DynamoDbContainerConnectionDetailsFactory}.
+ * Integration tests for {@link DynamoDbContainerConnectionDetailsFactory}.
  * @author Wilson da Rocha França
  */
 @SpringJUnitConfig
