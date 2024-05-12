@@ -1,4 +1,4 @@
-rootProject.name = "dynamodb-client-autoconfigure-test"
+rootProject.name = "dynamodb-client-test-autoconfigure"
 
 pluginManagement {
     val springBootVersion: String by settings
