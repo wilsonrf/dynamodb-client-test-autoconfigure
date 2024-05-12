@@ -45,6 +45,7 @@ dependencies {
     implementation("org.junit.jupiter:junit-jupiter-api")
     add("optional", "org.junit.jupiter:junit-jupiter-api")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    annotationProcessor("org.springframework.boot:spring-boot-autoconfigure-processor")
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
