@@ -14,11 +14,6 @@ repositories {
     mavenCentral()
 }
 
-val optional = configurations.create("optional") {
-    isCanBeConsumed = false
-    isCanBeResolved = true
-}
-
 val awsSdkVersion: String by project
 
 dependencyManagement {
@@ -30,20 +25,13 @@ dependencyManagement {
 dependencies {
     api("com.wilsonfranca:dynamodb-client-autoconfigure:1.0.0-SNAPSHOT")
     api("org.testcontainers:testcontainers")
-    add("optional", "org.testcontainers:testcontainers")
     api("org.springframework.boot:spring-boot-testcontainers")
-    add("optional", "org.springframework.boot:spring-boot-testcontainers")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-test-autoconfigure")
-    add("optional", "org.springframework.boot:spring-boot-test-autoconfigure")
     implementation("org.springframework:spring-test")
-    add("optional", "org.springframework:spring-test")
     implementation("software.amazon.awssdk:dynamodb")
-    add("optional", "software.amazon.awssdk:dynamodb")
     implementation( "software.amazon.awssdk:dynamodb-enhanced")
-    add("optional", "software.amazon.awssdk:dynamodb-enhanced")
     implementation("org.junit.jupiter:junit-jupiter-api")
-    add("optional", "org.junit.jupiter:junit-jupiter-api")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.springframework.boot:spring-boot-autoconfigure-processor")
     testImplementation("org.junit.jupiter:junit-jupiter")
