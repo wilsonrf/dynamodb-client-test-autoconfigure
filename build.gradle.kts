@@ -1,3 +1,18 @@
+/*
+* Copyright 2024 Wilson da Rocha França
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+ */
 plugins {
     id("base")
     id("java-library")
@@ -23,6 +38,7 @@ dependencyManagement {
         mavenBom("software.amazon.awssdk:bom:$awsSdkVersion")
     }
 }
+
 dependencies {
     api("com.wilsonfranca:dynamodb-client-autoconfigure:1.0.0-SNAPSHOT")
     api("org.testcontainers:testcontainers")
@@ -44,6 +60,27 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    testLogging { exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL }
+}
+
+tasks.register<Jar>("sourcesJar") {
+    archiveClassifier.set("sources")
+    from(sourceSets["main"].allSource)
+}
+
+tasks.register<Jar>("javadocJar") {
+    dependsOn("javadoc")
+    archiveClassifier.set("javadoc")
+    from(tasks["javadoc"].outputs)
+}
+
+val zipArtifacts by tasks.registering(Zip::class) {
+    dependsOn("publishMavenJavaPublicationToInternalRepoRepository")
+    from("${layout.buildDirectory.get()}/repo") {
+        exclude("**/maven-metadata*.*")
+    }
+    archiveFileName.set("${project.name}-${version}.zip")
+    destinationDirectory.set(file("${layout.buildDirectory.get()}/outputs"))
 }
 
 publishing {
