@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Integration tests for {@link DynamoDbTest}.
  */
 @DynamoDbTest
-@TestPropertySource(properties = "dynamodb.endpoint-override=http://localhost:8000")
+@TestPropertySource(properties = "dynamodb-client.endpoint-override=http://localhost:8000")
 public class DynamoDbTestIntegrationTest {
 
     @Autowired
