@@ -87,12 +87,39 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
+            artifact(tasks["sourcesJar"])
+            artifact(tasks["javadocJar"])
+
             versionMapping {
                 usage("java-api") {
                     fromResolutionOf("runtimeClasspath")
                 }
                 usage("java-runtime") {
                     fromResolutionResult()
+                }
+            }
+
+            pom {
+                name = "DynamoDB Client Test Autoconfigure"
+                description = "DynamoDB Client Test Autoconfigure"
+                url = "https://github.com/wilsonrf/dynamodb-client-test-autoconfigure"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "wilsonrf"
+                        name = "Wilson da Rocha França"
+                        email = "wilsonrf@gmail.com"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/dynamodb-client-test-autoconfigure.git"
+                    developerConnection = "scm:git:ssh://github.com/dynamodb-client-test-autoconfigure.git"
+                    url = "https://github.com/wilsonrf/dynamodb-client-test-autoconfigure"
                 }
             }
         }
