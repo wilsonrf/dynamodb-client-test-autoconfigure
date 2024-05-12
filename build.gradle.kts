@@ -4,6 +4,7 @@ plugins {
     id("org.springframework.boot") apply false
     id("io.spring.dependency-management")
     id("com.github.ben-manes.versions")
+    id("signing")
     id("maven-publish")
 }
 
