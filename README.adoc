@@ -1,0 +1,84 @@
+= DynamoDB client auto-configuration
+
+:github: https://github.com/wilsonrf/dynamodb-client-autoconfigure-test
+:starterGithubRepo: https://github.com/wilsonrf/dynamodb-client-test-starter
+== Key Features
+The DynamoDB client auto-configure test project provides a simple way to configure the DynamoDB client in your Spring Boot application for testing.
+The project provides the following features:
+* A DynamoDB Container based on the official AWS DynamoDB Docker image amazon/dynamodb-local
+* A ConnectionDetails bean that will be used to connect to the DynamoDB container
+
+== Installation
+
+=== Maven
+[source,xml]
+----
+<dependency>
+    <groupId>com.wilsonfranca</groupId>
+    <artifactId>dynamodb-client-autoconfigure-test</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <scope>test</scope>
+</dependency>
+----
+=== Gradle Groovy
+[source,groovy]
+----
+testImplementation 'com.wilsonfranca:dynamodb-client-autoconfigure:1.0.0-SNAPSHOT'
+----
+=== Gradle Kotlin
+[source,kotlin]
+----
+testImplementation("com.wilsonfranca:dynamodb-client-autoconfigure:1.0.0-SNAPSHOT")
+----
+
+== Usage
+
+It's recommended to use the {starterGithubRepo}[dynamodb-client-test-starter] to configure the DynamoDB client auto-configure test in your Spring Boot application.
+
+[source,java]
+----
+@DynamoDbTest
+@SpringBootTest
+@Testcontainers
+class YourTest {
+
+    private static final int DYNAMODB_PORT = 8000;
+
+    @Container
+    @ServiceConnection(value = "dynamoDb")
+    private static final DynamoDbContainer dynamoDb = new DynamoDbContainer()
+            .withExposedPorts(DYNAMODB_PORT);
+
+    @Autowired
+    private DynamoDbClient dynamoDbClient;
+
+    @Autowired
+    private DynamoDbConnectionDetails dynamoDbConnectionDetails;
+
+    @Test
+    void test() {
+        // your test goes here
+    }
+}
+----
+
+== Reporting Issues
+You can report issues at {github}/issues[GitHub].
+
+== Building from Source
+
+The DynamoDB client auto-configure test project uses a Gradle-based build system. In the instructions below, `./gradlew` is invoked from the root of the project and serves as a cross-platform, self-contained bootstrap mechanism for the build.
+You will need a Java Development Kit (JDK) 21 to build the project.
+[source,shell]
+----
+$ ./gradlew publishToMavenLocal
+----
+
+[source,shell]
+----
+$ ./gradlew build
+----
+
+== License
+
+DynamoDB client auto-configuration test is Open Source software released under the https://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
