@@ -1,4 +1,4 @@
-= DynamoDB client auto-configuration
+= DynamoDB client test auto-configure
 
 :github: https://github.com/wilsonrf/dynamodb-client-test-autoconfigure
 :starterGithubRepo: https://github.com/wilsonrf/dynamodb-client-test-starter
