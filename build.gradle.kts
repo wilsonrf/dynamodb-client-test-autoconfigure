@@ -132,6 +132,23 @@ publishing {
                 }
             }
         }
+
+        repositories {
+
+            maven {
+                name = "internalRepo"
+                url = uri("${layout.buildDirectory.get()}/repo")
+            }
+
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/wilsonrf/dynamodb-client-autoconfigure")
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
     }
 }
 
