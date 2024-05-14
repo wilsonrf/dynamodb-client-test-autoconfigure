@@ -81,4 +81,4 @@ $ ./gradlew build
 
 == License
 
-DynamoDB client test auto-configuration is Open Source software released under the https://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
+DynamoDB client auto-configure test is Open Source software released under the https://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
