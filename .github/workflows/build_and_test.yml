@@ -32,6 +32,8 @@ jobs:
         AWS_REGION: 'test'
         AWS_ACCESS_KEY_ID: 'test'
         AWS_SECRET_ACCESS_KEY: 'test'
+        GPR_USERNAME: ${{ secrets.GPR_USERNAME }}
+        GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
       run: ./gradlew build
 
   dependency-submission:

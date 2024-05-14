@@ -28,6 +28,15 @@ group = "com.wilsonfranca"
 repositories {
     mavenLocal()
     mavenCentral()
+    if (isRunningInCI()) {
+        maven {
+            url = uri("https://maven.pkg.github.com/wilsonrf/dynamodb-client-autoconfigure")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("GPR_USERNAME")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("GPR_TOKEN")
+            }
+        }
+    }
 }
 
 val awsSdkVersion: String by project
@@ -125,3 +134,5 @@ publishing {
         }
     }
 }
+
+private fun isRunningInCI(): Boolean = System.getenv("CI") == "true"
