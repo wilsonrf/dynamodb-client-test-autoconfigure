@@ -11,5 +11,9 @@ pluginManagement {
         id("io.spring.dependency-management") version springDependencyManagementVersion
         id("com.github.ben-manes.versions") version dependencyManagementVersion
         id("org.owasp.dependencycheck") version owaspDependencyCheckVersion
+        kotlin("jvm") version "1.9.23"
     }
+}
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }

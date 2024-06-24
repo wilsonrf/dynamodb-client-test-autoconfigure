@@ -22,6 +22,7 @@ plugins {
     id("org.owasp.dependencycheck")
     id("signing")
     id("maven-publish")
+    kotlin("jvm")
 }
 
 group = "com.wilsonfranca"
@@ -41,6 +42,7 @@ repositories {
 }
 
 val awsSdkVersion: String by project
+val dynamoDbLocalVersion: String by project
 
 dependencyManagement {
     imports {
@@ -91,6 +93,10 @@ val zipArtifacts by tasks.registering(Zip::class) {
     }
     archiveFileName.set("${project.name}-${version}.zip")
     destinationDirectory.set(file("${layout.buildDirectory.get()}/outputs"))
+}
+
+kotlin {
+    jvmToolchain(21)
 }
 
 publishing {
