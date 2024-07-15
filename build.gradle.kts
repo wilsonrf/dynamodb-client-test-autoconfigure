@@ -52,7 +52,7 @@ dependencyManagement {
 }
 
 dependencies {
-    api("com.wilsonfranca:dynamodb-client-autoconfigure:1.0.1-SNAPSHOT")
+    api("com.wilsonfranca:dynamodb-client-autoconfigure:1.0.1")
     api("org.testcontainers:testcontainers")
     api("org.springframework.boot:spring-boot-testcontainers")
     implementation("org.springframework.boot:spring-boot-starter")
